@@ -17,7 +17,13 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🌱 Planto Dashboard running on http://0.0.0.0:${PORT}`);
-    console.log(`📂 Serving static files from client/public/`);
-});
+// Export the app for Vercel
+export default app;
+
+// Only start the server if not in Vercel environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`🌱 Planto Dashboard running on http://0.0.0.0:${PORT}`);
+        console.log(`📂 Serving static files from client/public/`);
+    });
+}
