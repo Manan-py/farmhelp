@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planto Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Island+Moments:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Hover Trigger Area -->
+    <div class="header-hover-trigger" id="headerHoverTrigger"></div>
+    
+    <!-- Header Navigation -->
+    <header class="header" id="mainHeader">
+        <div class="logo">Planto</div>
+        <nav class="navigation">
+            <a href="#" class="nav-item active">Dashboard</a>
+            <a href="#" class="nav-item">Analytics</a>
+            <a href="#" class="nav-item">Reports</a>
+            <a href="#" class="nav-item">Store</a>
+        </nav>
+        <div class="user-profile">
+            <div class="notification-icon">🔔</div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <div class="welcome-text">
+                        <h1>Welcome Back, Kshitiz!</h1>
+                        <div class="date-info">
+                            📅 10 Sep, 2025
+                        </div>
+                    </div>
+                    <button class="plant-view-btn" onclick="scrollToPlantSection()">
+                        <span class="btn-icon">🌱</span>
+                        <span>View Plant Status</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Main Dashboard Grid -->
+            <main class="dashboard-grid">
+            <!-- Weather Card -->
+            <div class="card weather-card">
+                <div class="card-header">
+                    <h3>Environmental Conditions</h3>
+                    <div class="temperature">
+                        <span class="temp-value">24</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                </div>
+                <div class="weather-content">
+                    <div class="weather-metrics">
+                        <div class="metric">
+                            <div class="metric-value">4.6cm</div>
+                            <div class="metric-label">Height</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">2 Weeks</div>
+                            <div class="metric-label">Age</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">6-7km/h</div>
+                            <div class="metric-label">Wind N-E</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">0mm</div>
+                            <div class="metric-label">Precipitation</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">56%</div>
+                            <div class="metric-label">Humidity</div>
+                        </div>
+                        <div class="metric soil-temp">
+                            <div class="metric-value">16°</div>
+                            <div class="metric-label">Soil Temp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plant Growth Activity Card -->
+            <div class="card growth-card">
+                <div class="card-header">
+                    <h3>Growth Analytics</h3>
+                    <p class="card-description">Track your plant's height progression with detailed growth metrics over time.</p>
+                </div>
+                <div class="growth-content">
+                    <div class="growth-chart">
+                        <div class="chart-container">
+                            <div class="y-axis">
+                                <div class="y-label">10cm</div>
+                                <div class="y-label">8cm</div>
+                                <div class="y-label">6cm</div>
+                                <div class="y-label">4cm</div>
+                                <div class="y-label">2cm</div>
+                                <div class="y-label">0cm</div>
+                            </div>
+                            <div class="chart-area">
+                                <svg width="100%" height="200" viewBox="0 0 300 200">
+                                    <!-- Grid lines -->
+                                    <defs>
+                                        <pattern id="grid" width="60" height="40" patternUnits="userSpaceOnUse">
+                                            <path d="M 60 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid)" />
+                                    
+                                    <!-- Growth line -->
+                                    <path class="growth-line" d="M0,180 L75,160 L150,120 L225,80 L300,60" 
+                                          stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+                                    
+                                    
+                                    <!-- Area fill -->
+                                    <path d="M0,180 L75,160 L150,120 L225,80 L300,60 L300,200 L0,200 Z" 
+                                          fill="url(#gradient)" opacity="0.3"/>
+                                    
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#4ade80;stop-opacity:0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="x-axis">
+                            <div class="x-label">Week 1</div>
+                            <div class="x-label">Week 2</div>
+                            <div class="x-label">Week 3</div>
+                            <div class="x-label">Week 4</div>
+                            <div class="x-label">Week 5</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Growth Statistics -->
+                    <div class="growth-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">8.2cm</div>
+                            <div class="stat-label">Current Height</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">+2.1cm</div>
+                            <div class="stat-label">Weekly Growth</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">74%</div>
+                            <div class="stat-label">Growth Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soil Moisture Card -->
+            <div class="card soil-card">
+                <div class="card-header">
+                    <h3>Soil Moisture Levels</h3>
+                    <p class="card-description">Monitor soil hydration across different zones to ensure optimal plant health.</p>
+                </div>
+                <div class="soil-content">
+                    <div class="soil-chart">
+                        <div class="soil-bar low" style="height: 40%;">
+                            <div class="bar-fill"></div>
+                        </div>
+                        <div class="soil-bar optimal" style="height: 80%;">
+                            <div class="bar-fill"></div>
+                        </div>
+                        <div class="soil-bar high" style="height: 60%;">
+                            <div class="bar-fill"></div>
+                        </div>
+                    </div>
+                    <div class="soil-labels">
+                        <div class="soil-label">Low</div>
+                        <div class="soil-label">Optimal</div>
+                        <div class="soil-label">High</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plant Detail Card -->
+            <div class="card plant-detail-card">
+                <div class="card-header">
+                    <h3>Nutrient Distribution</h3>
+                    <p class="card-description">Track the balance of essential nutrients: Nitrogen, Phosphorus, and Potassium.</p>
+                </div>
+                <div class="plant-detail-content">
+                    <div class="plant-chart">
+                        <svg width="120" height="120" viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#4ade80" stroke-width="8" 
+                                stroke-dasharray="94 314" stroke-dashoffset="25" transform="rotate(-90 60 60)"/>
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#3b82f6" stroke-width="8" 
+                                stroke-dasharray="78 314" stroke-dashoffset="-69" transform="rotate(-90 60 60)"/>
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#1f2937" stroke-width="8" 
+                                stroke-dasharray="142 314" stroke-dashoffset="-147" transform="rotate(-90 60 60)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Water Level Card -->
+            <div class="card water-card">
+                <div class="card-header">
+                    <h3>Water Usage Trends</h3>
+                    <p class="card-description">Daily water consumption patterns and irrigation system efficiency metrics.</p>
+                </div>
+                <div class="water-content">
+                    <div class="water-chart">
+                        <div class="y-axis">
+                            <div class="y-label">30M</div>
+                            <div class="y-label">20M</div>
+                            <div class="y-label">10M</div>
+                            <div class="y-label">0</div>
+                        </div>
+                        <div class="chart-area">
+                            <svg width="100%" height="200" viewBox="0 0 300 200">
+                                <path d="M60,140 L150,130 L240,115" 
+                                      fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="60" cy="140" r="3" fill="#3b82f6"/>
+                                <circle cx="150" cy="130" r="3" fill="#3b82f6"/>
+                                <circle cx="240" cy="115" r="3" fill="#3b82f6"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </main>
+        </div>
+        
+        <!-- Plant Visualization Sidebar -->
+        <aside class="plant-sidebar">
+            <div class="card plant-visual-card">
+                <div class="card-header">
+                    <h3>Plant Status</h3>
+                    <p class="card-description">Visual representation of your plant's current growth stage and health.</p>
+                </div>
+                <div class="plant-visual-content">
+                    <div class="plant-container">
+                        <div class="growth-pot">
+                            <div class="pot-base"></div>
+                            <div class="soil-line"></div>
+                        </div>
+                        
+                        <!-- Plant stages animation -->
+                        <div class="plant-stages">
+                            <div class="plant-stage stage-1" data-week="1">
+                                <div class="stem stem-1"></div>
+                                <div class="stage-icon">🌱</div>
+                            </div>
+                            
+                            <div class="plant-stage stage-2" data-week="2">
+                                <div class="stem stem-2"></div>
+                                <div class="leaves">
+                                    <div class="leaf leaf-left">🍃</div>
+                                    <div class="leaf leaf-right">🍃</div>
+                                </div>
+                                <div class="stage-icon">🌿</div>
+                            </div>
+                            
+                            <div class="plant-stage stage-3 active" data-week="3">
+                                <div class="stem stem-3"></div>
+                                <div class="leaves">
+                                    <div class="leaf leaf-left">🍃</div>
+                                    <div class="leaf leaf-right">🍃</div>
+                                    <div class="leaf leaf-top">🌿</div>
+                                </div>
+                                <div class="stage-icon">🌳</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Plant Status Info -->
+                    <div class="plant-status-info">
+                        <div class="status-item clickable" onclick="animateGrowthStage(1)">
+                            <div class="status-label">Current Stage</div>
+                            <div class="status-value">Mature Plant 🌳</div>
+                        </div>
+                        <div class="status-item clickable" onclick="animateGrowthStage(2)">
+                            <div class="status-label">Growth Week</div>
+                            <div class="status-value">Week 3</div>
+                        </div>
+                        <div class="status-item clickable" onclick="animateGrowthStage(3)">
+                            <div class="status-label">Health Status</div>
+                            <div class="status-value healthy">Excellent</div>
+                        </div>
+                        <div class="status-item clickable" onclick="animateGrowthStage(4)">
+                            <div class="status-label">Next Milestone</div>
+                            <div class="status-value">Flowering Stage</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Growth Action Buttons -->
+                    <div class="plant-actions">
+                        <button class="action-btn water-btn" onclick="animateWatering()">
+                            <span class="btn-icon">💧</span>
+                            <span>Water Plant</span>
+                        </button>
+                        <button class="action-btn fertilize-btn" onclick="animateFertilizing()">
+                            <span class="btn-icon">🌿</span>
+                            <span>Add Fertilizer</span>
+                        </button>
+                        <button class="action-btn sunlight-btn" onclick="animateSunlight()">
+                            <span class="btn-icon">☀️</span>
+                            <span>Sunlight Boost</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="/static/script.js"></script>
+    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+</body>
+</html>

@@ -1,0 +1,1040 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fdfff9;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: auto;
+    padding-top: 100px;
+    transition: padding-top 0.3s ease;
+}
+
+body.header-hidden {
+    padding-top: 20px;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transform: translateY(0);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    gap: 60px;
+}
+
+.header.hidden {
+    transform: translateY(-100%);
+}
+
+.header.hover-visible {
+    transform: translateY(0);
+    opacity: 0.95;
+}
+
+/* Hover trigger area at extreme top of page */
+.header-hover-trigger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.header-hover-trigger.active {
+    pointer-events: all;
+}
+
+
+.dashboard-container {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: auto;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) minmax(600px, 2.5fr) minmax(300px, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.logo {
+    font-family: 'Island Moments', cursive;
+    font-size: 48px;
+    font-weight: 400;
+    color: #333;
+}
+
+.navigation {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-item.active,
+.nav-item:hover {
+    color: #333;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    margin-left: auto;
+}
+
+.notification-icon {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.notification-icon:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+}
+
+.user-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.user-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-info {
+    padding: 20px 20px 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.user-email {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.menu-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 8px 0;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 13px;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.menu-item:hover {
+    background: #f8f9fa;
+}
+
+.menu-item.logout {
+    color: #ef4444;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 8px;
+}
+
+.menu-item.logout:hover {
+    background: #fef2f2;
+}
+
+/* Welcome Section */
+.welcome-section {
+    padding: 40px;
+}
+
+.welcome-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.welcome-section h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #08301c;
+    margin-bottom: 10px;
+}
+
+.date-info {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.plant-view-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.3);
+}
+
+.plant-view-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(74, 222, 128, 0.4);
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.plant-view-btn:active {
+    transform: scale(0.95);
+}
+
+.plant-view-btn .btn-icon {
+    font-size: 16px;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 30px;
+    padding: 40px;
+    width: 100%;
+}
+
+.card {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    min-height: 300px;
+}
+
+.card-header {
+    margin-bottom: 20px;
+}
+
+.card-header h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 8px;
+}
+
+/* Weather Card */
+.weather-card {
+    grid-row: span 1;
+    background: linear-gradient(135deg, #08301c 0%, #0a3d21 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-width: 300px;
+    padding-right: 20px;
+}
+
+.weather-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.weather-card h3 {
+    color: white;
+    font-size: 24px;
+}
+
+.temperature {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.temp-value {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.temp-unit {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.weather-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: rgba(75, 111, 93, 0.3);
+    border-radius: 50%;
+}
+
+.weather-content::after {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 80px;
+    height: 80px;
+    background: rgba(75, 111, 93, 0.2);
+    border-radius: 50%;
+}
+
+.weather-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
+
+@media (max-width: 768px) {
+    .weather-metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+.metric {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.metric:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.metric-value {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.metric-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.soil-temp {
+    grid-column: span 2;
+}
+
+.soil-temp .metric-value {
+    font-size: 28px;
+}
+
+/* Growth Card */
+.growth-card {
+    grid-column: 2;
+    grid-row: span 1;
+    position: relative;
+}
+
+.card-description {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 8px;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.growth-content {
+    position: relative;
+    height: 350px;
+    padding: 25px;
+}
+
+.growth-chart {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chart-container {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 15px;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: 10px;
+    height: 200px;
+}
+
+.y-label {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+}
+
+.chart-area {
+    flex: 1;
+    position: relative;
+    background: #fafafa;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 220px;
+}
+
+.growth-line {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: drawLine 2s ease-out forwards;
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.x-axis {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin-top: 10px;
+}
+
+.x-label {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+    text-align: center;
+}
+
+.growth-stats {
+    display: flex;
+    justify-content: space-around;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4ade80;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+}
+
+/* Soil Card */
+.soil-card {
+    grid-row: 2;
+}
+
+.soil-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.soil-chart {
+    display: flex;
+    align-items: end;
+    gap: 25px;
+    height: 200px;
+    padding: 25px 0;
+}
+
+.soil-bar {
+    width: 50px;
+    display: flex;
+    align-items: end;
+}
+
+.soil-bar .bar-fill {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.soil-bar.low .bar-fill {
+    background: #a0bce8;
+    height: 100%;
+}
+
+.soil-bar.optimal .bar-fill {
+    background: #6be6d3;
+    height: 100%;
+}
+
+.soil-bar.high .bar-fill {
+    background: #a81e1e;
+    height: 100%;
+}
+
+.soil-labels {
+    display: flex;
+    gap: 25px;
+}
+
+.soil-label {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    width: 50px;
+}
+
+/* Plant Detail Card */
+.plant-detail-card {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* Plant Sidebar */
+.plant-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        width: 100%;
+        overflow-x: visible;
+        gap: 20px;
+    }
+    
+    .main-content {
+        min-width: auto;
+    }
+    
+    .plant-sidebar {
+        width: 100%;
+        position: relative;
+        top: auto;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .card {
+        min-height: 250px;
+        padding: 20px;
+    }
+}
+
+.plant-visual-card {
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.plant-visual-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.plant-container {
+    position: relative;
+    height: 280px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: linear-gradient(to bottom, #f0f8ff 0%, #e6f7ff 100%);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.plant-visual-content .growth-pot {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.plant-visual-content .pot-base {
+    width: 80px;
+    height: 50px;
+    background: linear-gradient(to bottom, #8b4513, #654321);
+    border-radius: 0 0 25px 25px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.plant-visual-content .pot-base::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    height: 8px;
+    background: #a0522d;
+    border-radius: 4px;
+}
+
+.plant-visual-content .soil-line {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: #8B4513;
+    border-radius: 2px;
+}
+
+.plant-visual-content .plant-stages {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0;
+}
+
+.plant-visual-content .plant-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.plant-visual-content .plant-stage.active {
+    opacity: 1;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.plant-visual-content .stem {
+    width: 4px;
+    background: linear-gradient(to top, #228B22, #32CD32);
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+.plant-visual-content .stem-1 {
+    height: 30px;
+}
+
+.plant-visual-content .stem-2 {
+    height: 45px;
+}
+
+.plant-visual-content .stem-3 {
+    height: 60px;
+}
+
+.plant-visual-content .leaves {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.plant-visual-content .leaf {
+    position: absolute;
+    font-size: 14px;
+    animation: sway 3s ease-in-out infinite;
+}
+
+.plant-visual-content .leaf-left {
+    left: -15px;
+    top: -5px;
+    animation-delay: 0s;
+}
+
+.plant-visual-content .leaf-right {
+    right: -15px;
+    top: -5px;
+    animation-delay: 1s;
+}
+
+.plant-visual-content .leaf-top {
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 2s;
+}
+
+.plant-visual-content .stage-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
+
+.plant-status-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #4ade80;
+    transition: all 0.3s ease;
+}
+
+.status-item.clickable {
+    cursor: pointer;
+}
+
+.status-item.clickable:hover {
+    background: #e8f5e8;
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(74, 222, 128, 0.2);
+}
+
+.status-label {
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+}
+
+.status-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    transition: transform 0.2s ease;
+}
+
+.status-value.healthy {
+    color: #4ade80;
+}
+
+.plant-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.3);
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+.btn-icon {
+    font-size: 16px;
+}
+
+.water-btn {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.water-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
+
+.fertilize-btn {
+    background: linear-gradient(135deg, #10b981, #047857);
+}
+
+.fertilize-btn:hover {
+    background: linear-gradient(135deg, #047857, #065f46);
+}
+
+.sunlight-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.sunlight-btn:hover {
+    background: linear-gradient(135deg, #d97706, #b45309);
+}
+
+.plant-detail-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 220px;
+}
+
+.plant-chart {
+    position: relative;
+    transform: scale(1.4);
+}
+
+/* Water Card */
+.water-card {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.water-content {
+    height: 280px;
+}
+
+.water-chart {
+    display: flex;
+    height: 100%;
+    gap: 20px;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 10px 0;
+}
+
+.y-label {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: right;
+}
+
+.chart-area {
+    flex: 1;
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Farm Illustration */
+.farm-illustration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .dashboard-container {
+        padding-right: 0;
+    }
+    
+    .farm-illustration {
+        display: none;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+    }
+    
+    .growth-card {
+        grid-column: span 2;
+    }
+    
+    .plant-sidebar {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .header {
+        gap: 40px;
+    }
+    
+    .navigation {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+        gap: 20px;
+    }
+    
+    .logo {
+        font-size: 32px;
+    }
+    
+    .navigation {
+        display: none;
+    }
+    
+    .welcome-section {
+        padding: 20px;
+    }
+    
+    .welcome-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .welcome-section h1 {
+        font-size: 24px;
+    }
+    
+    .plant-view-btn {
+        align-self: stretch;
+        justify-content: center;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .growth-card {
+        grid-column: 1;
+    }
+    
+    .growth-timeline {
+        gap: 20px;
+    }
+    
+    .phase-bubble {
+        min-width: 150px;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .weather-metrics {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .soil-temp {
+        grid-column: 1;
+    }
+}
