@@ -9,7 +9,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Serve static files from the public directory
-app.use('/static', express.static(path.join(__dirname, '../client/public/static')));
+app.use('/static', express.static(path.join(__dirname, '../client/public/static'), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    }
+    if (path.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+  }
+}));
 app.use('/figmaAssets', express.static(path.join(__dirname, '../client/public/figmaAssets')));
 
 // Serve the main HTML file for all routes
